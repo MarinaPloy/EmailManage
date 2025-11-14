@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    /* Scoped styling for the single record form */
+    #singleRecordForm .single-record-table th {
+        width: 35%;
+        background: #f5f5f5;
+        font-weight: 600;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    #singleRecordForm .single-record-table td {
+        padding: 0.25rem 0.5rem;
+        vertical-align: middle;
+    }
+
+    #singleRecordForm input.form-control-sm {
+        font-size: 0.75rem;
+        padding-top: 0.125rem;
+        padding-bottom: 0.125rem;
+        height: calc(1.5em + .5rem + 2px);
+    }
+
+    #singleRecordForm .single-record-wrapper {
+        background: #fff;
+    }
+</style>
+<div class="container-fluid">
+
+    <!-- start page title -->
+
+
+    <div class="row pt-5">
+        <div class="col-xxl-9">
+            <div class="card">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">Customer</h4>
+                    <div class="flex-shrink-0 text-end">
+                        <div class="mb-2 ">
+                            <div class="row">
+                                <div class="col-4">
+                                    <input id="txtCname" class=" form-control" placeholder="Customer Name..." />
+                                </div>
+                                <div class="col-3">
+                                    <input id="txtCnum" class=" form-control" placeholder="Customer Number..." />
+                                </div>
+                                <div class="col-3">
+                                    <input id="txtSnum" class=" form-control" placeholder="Site Number..." />
+                                </div>
+                                <div class="col-1">
+                                    <button class="btn-primary btn " id="btnSearch">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end card header -->
+                <div class="card-body">
+                    <div id="customerList">
+
+                        <div class="table-responsive table-card mt-3 mb-1" id="div_Cus">
+                            <table id="gridSearchCus" class="easyui-datagrid" style="height: 325px"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3">
+            <div class="card">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">Detail</h4>
+
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Customer detail</p>
+                    <div class="live-preview">
+                        <form id="singleRecordForm">
+
+                            <div class="single-record-wrapper border">
+                                <table class="table table-sm mb-0 single-record-table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="align-middle">CUSTOMER_NUMBER</th>
+                                            <td>
+                                                <input name="CustomerNumber" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">SITE_NUMBER</th>
+                                            <td>
+                                                <input name="SiteNumber" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">CUSTOMER_NAME</th>
+                                            <td>
+                                                <input name="CustomerName" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">ADDRESS1</th>
+                                            <td>
+                                                <input name="Address1" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">ADDRESS2</th>
+                                            <td>
+                                                <input name="Address2" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">ADDRESS3</th>
+                                            <td>
+                                                <input name="Address3" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">ADDRESS4</th>
+                                            <td>
+                                                <input name="Address4" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">CITY</th>
+                                            <td>
+                                                <input name="City" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="align-middle">POSTAL_CODE</th>
+                                            <td>
+                                                <input name="PostalCode" class="form-control form-control-sm" value="" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end row-->
+
+
+    <div class="row pt-4">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1">Email</h4>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary" id="btnAddEmail" hidden onclick="clickAddEmail()">Add Email</button>
+                    </div>
+                </div><!-- end card header -->
+                <div class="card-body">
+                    <div class="col-lg-12 ">
+
+                    </div>
+                    <div id="customerList">
+
+                        <div class="table-responsive table-card mt-3 mb-1" id="div_Cus">
+                            <table id="gridSearchEmail" class="easyui-datagrid" style="height: 500px"></table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="ManageEmail" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content border-0 overflow-hidden">
+            <div class="modal-header p-3">
+                <h4 class="card-title mb-0" id="emailModalTitle">Add</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <input type="hidden" id="modalConRecid" name="CON_RECID" />
+
+            <div class="modal-body">
+                <form id="emailManageForm" onsubmit="return false;">
+                    <input type="hidden" id="emailMode" value="Add" />
+                    <div class="mb-3">
+                        <label for="modalCustomerNumber" class="form-label">Customer Number</label>
+                        <input type="text" class="form-control" id="modalCustomerNumber" disabled>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="modalSiteNumber" class="form-label">Site Number</label>
+                        <input type="text" class="form-control" id="modalSiteNumber" disabled>
+                    </div>
+
+                    <div class="mb-2 d-flex justify-content-between align-items-center">
+                        <label class="form-label mb-0">Email (Tax Invoice)</label>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addEmailInput()">+ Add Email</button>
+                    </div>
+                    <div id="emailList"></div>
+
+                    <div class="text-end pt-2">
+                        <button type="button" id="btnSaveEmail" class="btn btn-primary" onclick="saveEmail()">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="~/Scripts/PageScripts/index.js"></script>
+    <script type="text/javascript">
+        var gridSearchCus_Url = '@Url.Action("GetCustomerList", "Home")';
+        var gridSearchEmail_Url = '@Url.Action("GetEmailList", "Home")';
+        var AddEmail = '@Url.Action("AddEmail", "Home")';
+        var EditEmail = '@Url.Action("EditEmail", "Home")';
+        var DeleteEmail = '@Url.Action("DeleteEmail", "Home")';
+    </script>
+}
