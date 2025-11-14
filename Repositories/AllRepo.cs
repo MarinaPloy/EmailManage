@@ -85,7 +85,7 @@ namespace ManageEmail.Repositories
             if (f.Snum > 0)
                 whereParts.Add("REGEXP_LIKE(TO_CHAR(SITE_NUMBER), " + f.Snum + ")");
             if (f.Cname != null)
-                whereParts.Add("REGEXP_LIKE(TO_CHAR(CUSTOMER_NAME), '" + f.Cname + "')");
+                whereParts.Add("REGEXP_LIKE(CUSTOMER_NAME, '" + f.Cname + "','i')");
 
             string whereClause = whereParts.Count > 0 ? "WHERE " + string.Join(" AND ", whereParts) : "";
 
