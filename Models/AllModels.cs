@@ -59,6 +59,7 @@ namespace ManageEmail.Models
         public string address4 { get; set; }
         public string city { get; set; }
         public string postal_code { get; set; }
+        public string COMPANY { get; set; }
 
         public int Total { get; set; }
         public int ROW_NUM { get; set; }

@@ -94,7 +94,7 @@ namespace ManageEmail.Repositories
                 "  SELECT ROW_NUMBER() OVER (ORDER BY " + f.order + ") AS ROW_NUM, " +
                 "         COUNT(*) OVER () AS TOTAL, " +
                 "         CUSTOMER_NUMBER, SITE_NUMBER, CUSTOMER_NAME, " +
-                "         ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, CITY, POSTAL_CODE " +
+                "         ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, CITY, POSTAL_CODE , COMPANY " +
                 "  FROM COS.ETAX_BOSS_CUSTOMER " +
                 "  " + whereClause + " " +
                 ") " +
@@ -124,7 +124,8 @@ namespace ManageEmail.Repositories
                     Total = GetInt("TOTAL"),
                     ROW_NUM = GetInt("ROW_NUM"),
                     PageNum = page,
-                    PageSize = pageSize
+                    PageSize = pageSize,
+                    COMPANY= GetString("COMPANY")
                 });
             }
             return list;
