@@ -218,6 +218,8 @@
     <Content Include="Plugins\EasyUi\images\tree_icons.png" />
     <Content Include="Plugins\EasyUi\images\validatebox_warning.png" />
     <Content Include="Plugins\EasyUi\js\jquery.easyui.min.js" />
+    <Content Include="Plugins\images\message.ico" />
+    <Content Include="Plugins\images\message.png" />
     <Content Include="Plugins\Jquery\js\jquery.min.js" />
     <Content Include="Plugins\pikky\pikkyutils.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />

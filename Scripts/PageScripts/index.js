@@ -94,8 +94,10 @@ function getTableCus() {
         sortName: 'customer_name',
         sortOrder: 'asc',
         columns: [[
+            { field: 'HaveEmail', title: 'Have<br/>Email', width: '5%', align: 'center', sortable: true },
             { field: 'customer_number', title: 'Customer<br/>Number', width: '10%', align: 'center', sortable: true, headerStyler: () => 'white-space:normal; line-height:1.2;' },
             { field: 'site_number', title: 'Site<br/>Number', width: '10%', align: 'center', sortable: true, headerStyler: () => 'white-space:normal; line-height:1.2;' },
+            { field: 'BRANCH', title: 'Branch', width: '10%', align: 'left', sortable: true },
             { field: 'COMPANY', title: 'Company', width: '10%', align: 'left', sortable: true },
             { field: 'customer_name', title: 'Customer Name', width: '45%', align: 'left', sortable: true },
             { field: 'address1', title: 'Address 1', width: '45%', align: 'left', sortable: true },

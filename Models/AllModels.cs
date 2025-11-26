@@ -60,10 +60,12 @@ namespace ManageEmail.Models
         public string city { get; set; }
         public string postal_code { get; set; }
         public string COMPANY { get; set; }
+        public string BRANCH { get; set; }
 
         public int Total { get; set; }
         public int ROW_NUM { get; set; }
         public int PageNum { get; set; }
         public int PageSize { get; set; }
+        public int HaveEmail { get; set; }
     }
 }

@@ -76,7 +76,7 @@ namespace ManageEmail.Repositories
             int pageSize = int.TryParse(f.page_size, out var ps) ? (ps > 0 ? ps : 10) : 10;
 
             string[] allowedSortColumns = {
-                "CUSTOMER_NUMBER","SITE_NUMBER","CUSTOMER_NAME","CITY","POSTAL_CODE"
+                "CUSTOMER_NUMBER","SITE_NUMBER","CUSTOMER_NAME","CITY","POSTAL_CODE","BRANCH"
             };
 
             var whereParts = new List<string>();
@@ -94,8 +94,9 @@ namespace ManageEmail.Repositories
                 "  SELECT ROW_NUMBER() OVER (ORDER BY " + f.order + ") AS ROW_NUM, " +
                 "         COUNT(*) OVER () AS TOTAL, " +
                 "         CUSTOMER_NUMBER, SITE_NUMBER, CUSTOMER_NAME, " +
-                "         ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, CITY, POSTAL_CODE , COMPANY " +
-                "  FROM COS.ETAX_BOSS_CUSTOMER " +
+                "         ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, CITY, POSTAL_CODE , COMPANY, BRANCH, " +
+                "         (SELECT COUNT(*) FROM COS.ETAX_CONTACT_EMAIL e WHERE e.CUST_NUMBER = c.CUSTOMER_NUMBER AND e.SITE_NUMBER = c.SITE_NUMBER) AS HAVE_EMAIL " +
+                "  FROM COS.ETAX_BOSS_CUSTOMER c " +
                 "  " + whereClause + " " +
                 ") " +
                 "WHERE ROW_NUM BETWEEN ((" + page + " - 1) * " + pageSize + " + 1) AND (" + page + " * " + pageSize + ") " +
@@ -125,7 +126,9 @@ namespace ManageEmail.Repositories
                     ROW_NUM = GetInt("ROW_NUM"),
                     PageNum = page,
                     PageSize = pageSize,
-                    COMPANY= GetString("COMPANY")
+                    COMPANY = GetString("COMPANY"),
+                    BRANCH = GetString("BRANCH"),
+                    HaveEmail = GetInt("HAVE_EMAIL")
                 });
             }
             return list;

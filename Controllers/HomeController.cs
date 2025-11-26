@@ -17,6 +17,8 @@ namespace ManageEmail.Controllers
             return View();
         }
 
+
+
         public JsonResult GetCustomerList(Filtersearch f)
         {
             f.page = Request.Params["page"];
@@ -24,7 +26,7 @@ namespace ManageEmail.Controllers
             f.sort_column = Request.Params["sort"];
             f.order = f.sort_column + " " + Request.Params["order"];
             f.Cnum = int.TryParse(Request.Params["Cnum"], out var cnum) ? cnum : 0;
-            f.Snum = int.TryParse(Request.Params["Snum"], out var snum) ? snum : 0; 
+            f.Snum = int.TryParse(Request.Params["Snum"], out var snum) ? snum : 0;
             var cname = Request.Params["Cname"];
             f.Cname = string.IsNullOrWhiteSpace(cname) ? null : cname;
 
@@ -113,7 +115,7 @@ namespace ManageEmail.Controllers
                 return Json(new { success = false, error = ex.Message });
             }
         }
-
+        [AllowAnonymous]
         public ActionResult NoAccess()
         {
             // This will never be hit for authorized users; route used by EtaxAuthorizeAttribute.

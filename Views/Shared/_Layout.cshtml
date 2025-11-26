@@ -4,11 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Email Manage</title>
+
+    <link rel="shortcut icon" href="~/Plugins/images/message.ico">
     <link href="~/Plugins/EasyUi/css/demo.css" rel="stylesheet" />
     <link href="~/Plugins/EasyUi/css/easyui.css" rel="stylesheet" />
     <link href="~/Plugins/EasyUi/css/icon.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <style>
+        /* Page layout: ensure footer sticks to bottom when content is short */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Main content grows to fill available space */
+        .main-content {
+            flex: 1 0 auto;
+        }
+
+        /* Footer stays after .main-content */
+        footer {
+            flex-shrink: 0;
+            padding: 0.75rem 1rem;
+            background: transparent;
+        }
+
         /* Simplified navbar spacing to match provided sample */
         .navbar-custom {
             padding: 8px 40px; /* left/right space similar to screenshot */
@@ -25,7 +51,6 @@
 </head>
 <body>
 
-    
     <nav class="navbar navbar-dark bg-dark navbar-custom">
         <div class="container-fluid d-flex align-items-center">
             @Html.ActionLink("E-Tax Email", "Index", "Home", new { area = "" }, new { @class = "navbar-brand mb-0 h1" })
@@ -40,14 +65,15 @@
                 @RenderBody()
             </div>
         </div>
-    </div>
-    <div class="container body-content">
 
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Email Manage</p>
-        </footer>
     </div>
+
+    <hr />
+    <footer>
+        <div class="container-fluid">
+            <p class="mb-0">&copy; @DateTime.Now.Year - Email Manage</p>
+        </div>
+    </footer>
 
     @RenderSection("scripts", required: false)
     <script src="~/Plugins/Jquery/js/jquery.min.js"></script>
